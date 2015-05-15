@@ -1,0 +1,4 @@
+DirectoryIndex index.php
+ErrorDocument 404 //dotwee.de/404.html
+order deny,allow
+allow from all
