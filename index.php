@@ -42,6 +42,7 @@
 
         footer, ul, li {
             list-style-type: none;
+            font-style: italic;
         }
     </style>
 </head>
@@ -126,7 +127,7 @@ echo "<h2>" . $randomArray[array_rand($randomArray)] . ".</h2>";
         <li>2015 Copyright:</li>
         <li>
             <a href="https://dotwee.de">
-                <cite>Lukas Wolfsteiner</cite>
+                Lukas Wolfsteiner
             </a>
         </li>
     </ul>
