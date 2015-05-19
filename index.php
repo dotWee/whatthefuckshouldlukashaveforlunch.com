@@ -115,7 +115,7 @@ function gimmeAFuckingFoodArray() {
 $randomArray = gimmeAFuckingFoodArray();
 $randomFood = $randomArray[array_rand($randomArray)];
 
-echo "<h2>" . $randomArray[array_rand($randomArray)] . "</h2>";
+echo "<h2>" . $randomArray[array_rand($randomArray)] . ".</h2>";
 
 ?>
 <a href="?">Lukas doesn't fucking want that</a>
