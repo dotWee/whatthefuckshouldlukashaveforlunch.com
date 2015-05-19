@@ -124,7 +124,7 @@ echo "<h2>" . $randomArray[array_rand($randomArray)] . "</h2>";
     <ul>
         <li>2015 Copyright:</li>
         <li>
-            <a href="//dotwee.de">
+            <a href="https://dotwee.de">
                 <cite>Lukas Wolfsteiner</cite>
             </a>
         </li>
