@@ -4,7 +4,6 @@
     <style>
         html, body {
             text-align: center;
-            font-size: 122%;
             overflow: hidden;
             padding: 0;
             margin: 0;
