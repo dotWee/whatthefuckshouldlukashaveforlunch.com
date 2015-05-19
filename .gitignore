@@ -57,5 +57,5 @@ crashlytics.properties
 crashlytics-build.properties
 
 # Web-server
-.htaccess
+/.htaccess
 robots.txt
