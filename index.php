@@ -1,15 +1,42 @@
-<html>
+<!DOCTYPE html>
 <head>
     <title>What The Fuck Should Lukas Eat For Lunch</title>
     <style>
-        h1, h2, a {
+        html, body {
             text-align: center;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+
+            height: 100%;
+            width: 100%;
+        }
+
+        h1, h2, a {
             display: block;
         }
 
+        div {
+            position: relative;
+            top: 50%;
+
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
         footer {
-            position: fixed;
             left: 0; bottom: 0;
+            position: fixed;
+            padding: 0;
+            margin: 1em;
+        }
+
+        footer ul {
+            padding: 0;
+            margin: 0;
         }
 
         footer, ul, li {
@@ -18,6 +45,8 @@
     </style>
 </head>
 <body>
+
+<div>
 <h1>Lukas should fucking eat</h1>
 
 <?php
@@ -89,6 +118,7 @@ echo "<h2>" . $randomArray[array_rand($randomArray)] . "</h2>";
 
 ?>
 <a href="?">Lukas doesn't fucking want that</a>
+</div>
 
 <footer>
     <ul>
