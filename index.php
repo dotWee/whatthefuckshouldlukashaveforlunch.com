@@ -28,20 +28,17 @@
         }
 
         footer {
+            white-space: nowrap;
             left: 0; bottom: 0;
             position: fixed;
             padding: 0;
             margin: 1em;
         }
 
-        footer ul {
+        footer a, footer p {
+            display: inline;
             padding: 0;
             margin: 0;
-        }
-
-        footer, ul, li {
-            list-style-type: none;
-            font-style: italic;
         }
     </style>
 
