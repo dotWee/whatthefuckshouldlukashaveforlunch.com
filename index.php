@@ -44,11 +44,13 @@
             font-style: italic;
         }
     </style>
+
+    <?php include "include.php" ?>
 </head>
 <body>
 
 <div>
-<h1>Lukas should fucking eat</h1>
+    <h1>Lukas should fucking eat</h1>
 
 <?php
 
@@ -115,21 +117,14 @@ function gimmeAFuckingFoodArray() {
 $randomArray = gimmeAFuckingFoodArray();
 $randomFood = $randomArray[array_rand($randomArray)];
 
-echo "<h2>" . $randomArray[array_rand($randomArray)] . ".</h2>";
+echo "    <h2>" . $randomArray[array_rand($randomArray)] . ".</h2>";
 
 ?>
 <a href="?">Lukas doesn't fucking want that</a>
-</div>
+    </div>
 
 <footer>
-    <ul>
-        <li>2015 Copyright:</li>
-        <li>
-            <a href="https://dotwee.de">
-                Lukas Wolfsteiner
-            </a>
-        </li>
-    </ul>
+    <p>&copy; 2015 <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
 </footer>
 
 </body>
