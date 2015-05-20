@@ -3,6 +3,8 @@
     <title>What The Fuck Should Lukas Eat For Lunch</title>
     <style>
         html, body {
+            font-family: "Times New Roman", Times, serif;
+            letter-spacing: 0.01rem;
             text-align: center;
             overflow: hidden;
             padding: 0;
@@ -44,6 +46,10 @@
             display: inline;
             padding: 0;
             margin: 0;
+        }
+
+        footer a {
+            font-style: italic;
         }
     </style>
 
