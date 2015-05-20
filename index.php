@@ -25,6 +25,11 @@
             -ms-transform: translateY(-50%);
             -o-transform: translateY(-50%);
             transform: translateY(-50%);
+            margin: 0 auto;
+
+            max-width: 25rem;
+            min-width: 12rem;
+            width: 70%;
         }
 
         footer {
