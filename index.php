@@ -63,7 +63,7 @@
  * Time: 14:07
  */
 
-function gimmeAFuckingFoodArray() {
+function gimmeSomeFood() {
     $sandwiches = array(
         "a god fucking spicy avocado wrap",
         "a chicken fucking caesar wrap",
@@ -113,13 +113,11 @@ function gimmeAFuckingFoodArray() {
         $minor
     );
 
-    return $things[array_rand($things)];
+    $randomArray = $things[array_rand($things)];
+    return $randomArray[array_rand($randomArray)];
 }
 
-$randomArray = gimmeAFuckingFoodArray();
-$randomFood = $randomArray[array_rand($randomArray)];
-
-echo "    <h2>" . $randomArray[array_rand($randomArray)] . ".</h2>";
+echo "    <h2>" . gimmeSomeFood() . ".</h2>";
 
 ?>
     <a href="?">Lukas doesn't fucking want that</a>
