@@ -91,17 +91,6 @@ function gimmeSomeFood() {
         "a fucking salad"
     );
 
-    $italianmode = array(
-        "some fucking creamy pasta with asparagus and peas",
-        "some fucking spaghetti",
-        "a fucking handmade pizza",
-    );
-
-    $asianmode = array(
-        "some chinease fucking eggplant",
-        "some fucking sushi"
-    );
-
     $minor = array(
         "grilled fucking cheese and fucking tomato soup",
         "a fucking indian curry nanburger",
@@ -109,21 +98,22 @@ function gimmeSomeFood() {
         "nothing just a fucking coffee",
         "god damn chicken tikka fucking masala",
         "a god fucking fish",
+
+        "some fucking creamy pasta with asparagus and peas",
+        "some fucking spaghetti",
+        "a fucking handmade pizza",
+
+        "some chinease fucking eggplant",
+        "some fucking sushi"
     );
 
-    $things = array(
-        $sandwiches,
-        $italianmode,
-        $asianmode,
-        $healthystuff,
-        $minor
-    );
+    $things = array($sandwiches, $healthystuff, $minor);
 
     $randomArray = $things[array_rand($things)];
     return $randomArray[array_rand($randomArray)];
 }
 
-echo "    <h2>" . gimmeSomeFood() . ".</h2>";
+echo "    <h2>" . gimmeSomeFood() . " for lunch.</h2>";
 
 ?>
     <a href="?">Lukas doesn't fucking want that</a>
