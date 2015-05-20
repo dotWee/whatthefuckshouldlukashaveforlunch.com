@@ -12,7 +12,7 @@
             width: 100%;
         }
 
-        h1, h2, a {
+        section * {
             display: block;
         }
 
