@@ -16,7 +16,7 @@
             display: block;
         }
 
-        div {
+        section {
             position: relative;
             top: 50%;
 
@@ -51,7 +51,7 @@
 </head>
 <body>
 
-<div>
+<section>
     <h1>Lukas should fucking eat</h1>
 
 <?php
@@ -122,8 +122,8 @@ $randomFood = $randomArray[array_rand($randomArray)];
 echo "    <h2>" . $randomArray[array_rand($randomArray)] . ".</h2>";
 
 ?>
-<a href="?">Lukas doesn't fucking want that</a>
-    </div>
+    <a href="?">Lukas doesn't fucking want that</a>
+</section>
 
 <footer>
     <p>&copy; 2015 <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
