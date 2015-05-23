@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head>
+<head lang="en">
     <title>What The Fuck Should Lukas Eat For Lunch</title>
     <link rel="shortcut icon" href="favicon.png">
     <style>
