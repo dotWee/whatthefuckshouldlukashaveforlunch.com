@@ -2,6 +2,7 @@
 <head lang="en">
     <title>What The Fuck Should Lukas Eat For Lunch</title>
     <link rel="shortcut icon" href="favicon.png">
+    <meta charset="utf-8">
     <style>
         html, body {
             font-family: "Times New Roman", Times, serif;
