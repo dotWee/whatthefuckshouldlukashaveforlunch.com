@@ -64,8 +64,6 @@
             font-style: italic;
         }
     </style>
-
-    <?php include "include.php" ?>
 </head>
 <body>
 
