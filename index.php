@@ -34,6 +34,16 @@
             width: 70%;
         }
 
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin: 1em;
+        }
+
         footer {
             white-space: nowrap;
             left: 0; bottom: 0;
@@ -58,7 +68,7 @@
 <body>
 
 <section>
-    <h1>Lukas should fucking eat</h1>
+    <h1>Lukas should eat</h1>
 
 <?php
 
@@ -108,8 +118,8 @@ function gimmeSomeFood() {
     );
 
     $things = array($sandwiches, $healthystuff, $minor);
-
     $randomArray = $things[array_rand($things)];
+
     return $randomArray[array_rand($randomArray)];
 }
 
