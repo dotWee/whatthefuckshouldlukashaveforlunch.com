@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>What The Fuck Should Lukas Eat For Lunch</title>
+    <link rel="shortcut icon" href="favicon.png">
     <style>
         html, body {
             font-family: "Times New Roman", Times, serif;
@@ -53,9 +54,9 @@
         }
 
         footer a, footer p {
-            display: inline;
+            text-align: left;
+            margin: 0.1em;
             padding: 0;
-            margin: 0;
         }
 
         footer a {
@@ -130,7 +131,8 @@ echo "    <h2>" . gimmeSomeFood() . " for lunch.</h2>";
 </section>
 
 <footer>
-    <p>&copy; 2015 <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
+    <p>Source on <a href="https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com">Github</a></p>
+    <p>2015, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
 </footer>
 
 </body>
