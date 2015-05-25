@@ -3,6 +3,7 @@
     <title>What The Fuck Should Lukas Eat For Lunch</title>
     <link rel="shortcut icon" href="favicon.png">
     <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
     <style>
         html, body {
             font-family: "Times New Roman", Times, serif;
@@ -36,13 +37,17 @@
             width: 70%;
         }
 
+        section a {
+            line-height: 120%;
+        }
+
         h1 {
-            font-size: 2em;
+            font-size: 2rem;
             margin: 0;
         }
 
         h2 {
-            font-size: 1.5em;
+            font-size: 1.5rem;
             margin: 1em;
         }
 
@@ -55,6 +60,7 @@
         }
 
         footer a, footer p {
+            font-size: 1rem;
             text-align: left;
             margin: 0.1em;
             padding: 0;
