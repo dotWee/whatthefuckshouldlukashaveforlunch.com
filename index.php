@@ -43,15 +43,11 @@
 
         h1 {
             font-size: 3rem;
+            margin: 0;
         }
 
         h2 {
             font-size: 2rem;
-            margin: 0;
-        }
-
-        h3 {
-            font-size: 1.5rem;
             margin: 1em;
         }
 
@@ -135,16 +131,20 @@
         return $randomArray[array_rand($randomArray)];
     }
 
-    echo "    <h2>" . gimmeSomeFood() . " for lunch.</h2>";
+    echo "    <h2>" . gimmeSomeFood() . "</h2>";
 
     ?>
+
+    <h1>for lunch.</h1>
+
     <a href="?">Lukas doesn't fucking want that</a>
 </section>
 
 <footer>
-    <p>Source on <a href="https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com">Github</a></p>
-
     <p>2015, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
+
+    <p>whatthefuckshouldlukashaveforlunch on <a href="https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com">Github</a>
+    </p>
 </footer>
 
 </body>
