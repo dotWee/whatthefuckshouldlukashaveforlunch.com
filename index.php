@@ -42,18 +42,23 @@
         }
 
         h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
             font-size: 2rem;
             margin: 0;
         }
 
-        h2 {
+        h3 {
             font-size: 1.5rem;
             margin: 1em;
         }
 
         footer {
             white-space: nowrap;
-            left: 0; bottom: 0;
+            left: 0;
+            bottom: 0;
             position: fixed;
             padding: 0;
             margin: 1em;
@@ -76,67 +81,69 @@
 <section>
     <h1>Lukas should eat</h1>
 
-<?php
+    <?php
 
-/**
- * Created by IntelliJ IDEA.
- * User: Lukas
- * Date: 15.05.2015
- * Time: 14:07
- */
+    /**
+     * Created by IntelliJ IDEA.
+     * User: Lukas
+     * Date: 15.05.2015
+     * Time: 14:07
+     */
 
-function gimmeSomeFood() {
-    $sandwiches = array(
-        "a god fucking spicy avocado wrap",
-        "a chicken fucking caesar wrap",
-        "a fucking chicken bacon ranch sandwich",
-        "a fucking chicken sandwich",
-        "a fucking dragon sandwich",
-    );
+    function gimmeSomeFood()
+    {
+        $sandwiches = array(
+            "a god fucking spicy avocado wrap",
+            "a chicken fucking caesar wrap",
+            "a fucking chicken bacon ranch sandwich",
+            "a fucking chicken sandwich",
+            "a fucking dragon sandwich",
+        );
 
-    $healthystuff = array(
-        "a fucking lentil and carrot soup",
-        "some god damn egg and rocket pizzas",
-        "some cauliflower, paneer and fucking pea curry",
-        "smoky beans on god fucking toast",
-        "some fucking green fitters",
-        "just something god fucking healthy",
-        "just a god fucking apple",
-        "a fucking chicken salad",
-        "a fucking vegan salad",
-        "a fucking salad"
-    );
+        $healthystuff = array(
+            "a fucking lentil and carrot soup",
+            "some god damn egg and rocket pizzas",
+            "some cauliflower, paneer and fucking pea curry",
+            "smoky beans on god fucking toast",
+            "some fucking green fitters",
+            "just something god fucking healthy",
+            "just a god fucking apple",
+            "a fucking chicken salad",
+            "a fucking vegan salad",
+            "a fucking salad"
+        );
 
-    $minor = array(
-        "grilled fucking cheese and fucking tomato soup",
-        "a fucking indian curry nanburger",
-        "some fucking tarragon chicken",
-        "nothing just a fucking coffee",
-        "god damn chicken tikka fucking masala",
-        "a god fucking fish",
+        $minor = array(
+            "grilled fucking cheese and fucking tomato soup",
+            "a fucking indian curry nanburger",
+            "some fucking tarragon chicken",
+            "nothing just a fucking coffee",
+            "god damn chicken tikka fucking masala",
+            "a god fucking fish",
 
-        "some fucking creamy pasta with asparagus and peas",
-        "some fucking spaghetti",
-        "a fucking handmade pizza",
+            "some fucking creamy pasta with asparagus and peas",
+            "some fucking spaghetti",
+            "a fucking handmade pizza",
 
-        "some chinease fucking eggplant",
-        "some fucking sushi"
-    );
+            "some chinease fucking eggplant",
+            "some fucking sushi"
+        );
 
-    $things = array($sandwiches, $healthystuff, $minor);
-    $randomArray = $things[array_rand($things)];
+        $things = array($sandwiches, $healthystuff, $minor);
+        $randomArray = $things[array_rand($things)];
 
-    return $randomArray[array_rand($randomArray)];
-}
+        return $randomArray[array_rand($randomArray)];
+    }
 
-echo "    <h2>" . gimmeSomeFood() . " for lunch.</h2>";
+    echo "    <h2>" . gimmeSomeFood() . " for lunch.</h2>";
 
-?>
+    ?>
     <a href="?">Lukas doesn't fucking want that</a>
 </section>
 
 <footer>
     <p>Source on <a href="https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com">Github</a></p>
+
     <p>2015, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
 </footer>
 
