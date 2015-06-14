@@ -88,47 +88,45 @@
 
     function gimmeSomeFood()
     {
-        $sandwiches = array(
-            "a god fucking spicy avocado wrap",
+
+        $stuff = array(
+            "a fucking spicy avocado wrap",
             "a chicken fucking caesar wrap",
             "a fucking chicken bacon ranch sandwich",
             "a fucking chicken sandwich",
             "a fucking dragon sandwich",
-        );
-
-        $healthystuff = array(
             "a fucking lentil and carrot soup",
-            "some god damn egg and rocket pizzas",
-            "some cauliflower, paneer and fucking pea curry",
-            "smoky beans on god fucking toast",
-            "some fucking green fitters",
-            "just something god fucking healthy",
-            "just a god fucking apple",
             "a fucking chicken salad",
             "a fucking vegan salad",
-            "a fucking salad"
-        );
-
-        $minor = array(
-            "grilled fucking cheese and fucking tomato soup",
+            "a fucking salad",
+            "a wrap with fucking couscous, beans and rosted pepper",
             "a fucking indian curry nanburger",
-            "some fucking tarragon chicken",
-            "nothing just a fucking coffee",
-            "god damn chicken tikka fucking masala",
-            "a god fucking fish",
+            "a fucking margharita pizza",
+            "a fucking pepperoni pizza",
+            "a fucking handmade pizza",
+            "a fucking tokachi wagyu steak",
 
+            "smoky beans on damn fucking toast",
+            "just something damn fucking healthy",
+            "just a damn fucking apple",
+            "grilled fucking cheese and fucking tomato soup",
+            "nothing just a fucking coffee",
+
+            "some cauliflower, paneer and fucking pea curry",
+            "some damn chicken tikka fucking masala",
+            "some fucking tarragon chicken",
             "some fucking creamy pasta with asparagus and peas",
             "some fucking spaghetti",
-            "a fucking handmade pizza",
-
             "some chinease fucking eggplant",
-            "some fucking sushi"
+            "some fucking sushi",
+            "some fucking chicken black bean chili",
+            "some fucking sweet potato pasta",
+            "some fucking zimbabwan peanut stew",
+            "some fucking enchiladas suizas",
+            "some chicken with smashed potatoes and fucking broccoli"
         );
 
-        $things = array($sandwiches, $healthystuff, $minor);
-        $randomArray = $things[array_rand($things)];
-
-        return $randomArray[array_rand($randomArray)];
+        return array_rand($stuff);
     }
 
     echo "    <h2>" . gimmeSomeFood() . "</h2>";
