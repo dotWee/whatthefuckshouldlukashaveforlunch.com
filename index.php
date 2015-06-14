@@ -88,45 +88,8 @@
 
     function gimmeSomeFood()
     {
-
-        $stuff = array(
-            "a fucking spicy avocado wrap",
-            "a chicken fucking caesar wrap",
-            "a fucking chicken bacon ranch sandwich",
-            "a fucking chicken sandwich",
-            "a fucking dragon sandwich",
-            "a fucking lentil and carrot soup",
-            "a fucking chicken salad",
-            "a fucking vegan salad",
-            "a fucking salad",
-            "a wrap with fucking couscous, beans and rosted pepper",
-            "a fucking indian curry nanburger",
-            "a fucking margharita pizza",
-            "a fucking pepperoni pizza",
-            "a fucking handmade pizza",
-            "a fucking tokachi wagyu steak",
-
-            "smoky beans on damn fucking toast",
-            "just something damn fucking healthy",
-            "just a damn fucking apple",
-            "grilled fucking cheese and fucking tomato soup",
-            "nothing just a fucking coffee",
-
-            "some cauliflower, paneer and fucking pea curry",
-            "some damn chicken tikka fucking masala",
-            "some fucking tarragon chicken",
-            "some fucking creamy pasta with asparagus and peas",
-            "some fucking spaghetti",
-            "some chinease fucking eggplant",
-            "some fucking sushi",
-            "some fucking chicken black bean chili",
-            "some fucking sweet potato pasta",
-            "some fucking zimbabwan peanut stew",
-            "some fucking enchiladas suizas",
-            "some chicken with smashed potatoes and fucking broccoli"
-        );
-
-        return array_rand($stuff);
+        $foods = file("foods.txt");
+        return $foods[array_rand($foods)];
     }
 
     echo "    <h2>" . gimmeSomeFood() . "</h2>";
