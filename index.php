@@ -75,7 +75,7 @@
 <body>
 
 <section>
-    <h1>Lukas should eat</h1>
+    <h1>Lukas should have</h1>
 
     <?php
 
