@@ -103,7 +103,7 @@
 </section>
 
 <footer>
-    <p>2015, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
+    <p>2016, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
 
     <p>whatthefuckshouldlukashaveforlunch on <a href="https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com">Github</a>
     </p>
