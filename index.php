@@ -57,19 +57,15 @@
             bottom: 0;
             position: fixed;
             padding: 0;
-            margin: 1em;
+            margin: 0.8rem;
         }
 
-        footer a, footer p {
-            font-size: 1rem;
-            line-height: 1.15rem;
+        footer > * {
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 0.80rem;
             text-align: left;
-            margin: 0.1em;
+            margin: 0.05em;
             padding: 0;
-        }
-
-        footer a {
-            font-style: italic;
         }
     </style>
 </head>
