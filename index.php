@@ -62,6 +62,7 @@
 
         footer a, footer p {
             font-size: 1rem;
+            line-height: 1.15rem;
             text-align: left;
             margin: 0.1em;
             padding: 0;
