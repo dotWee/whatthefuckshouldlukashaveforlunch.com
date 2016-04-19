@@ -120,7 +120,7 @@
 
     function gimmeSomeFood()
     {
-        $foods = file("foods.txt");
+        $foods = file("foods.txt", FILE_SKIP_EMPTY_LINES);
         return $foods[array_rand($foods)];
     }
 
