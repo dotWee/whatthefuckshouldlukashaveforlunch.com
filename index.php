@@ -123,7 +123,7 @@
         $foods = file("foods.txt", FILE_SKIP_EMPTY_LINES);
         do {
             $randomFood = $foods[array_rand($foods)];
-        } while (!empty($randomFood));
+        } while (empty($randomFood));
 
         return $randomFood;
     }
