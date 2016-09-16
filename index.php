@@ -121,10 +121,7 @@
     function gimmeSomeFood()
     {
         $foods = file("foods.txt", FILE_SKIP_EMPTY_LINES);
-        do {
-            $randomFood = $foods[array_rand($foods)];
-        } while (empty($randomFood));
-
+        $randomFood = $foods[array_rand($foods)];
         return $randomFood;
     }
 
