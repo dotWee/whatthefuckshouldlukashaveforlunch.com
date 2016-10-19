@@ -118,14 +118,72 @@
      * Time: 14:07
      */
 
-    function gimmeSomeFood()
+    function is_weekend()
     {
-        $foods = file("foods.txt", FILE_SKIP_EMPTY_LINES);
-        $randomFood = $foods[array_rand($foods)];
-        return $randomFood;
+        $_weekDay = date('w');
+
+        return ($_weekDay == 0 || $_weekDay == 6);
     }
 
-    echo "    <h2>" . gimmeSomeFood() . "</h2>";
+    function get_mensa_menu_url()
+    {
+        $_weekNumber = date("W");
+
+        // if page is opened on the weekend, use the menu of the following week
+        if (is_weekend()) {
+            $_weekNumber++;
+        }
+
+        return "http://www.stwno.de/infomax/daten-extern/csv/UNI-R/$_weekNumber.csv";
+    }
+
+    function get_menu()
+    {
+        $_csv = file_get_contents(get_mensa_menu_url());
+
+        if (is_weekend()) {
+            $_menuDate = date('d.m.Y', strtotime('next monday'));
+        } else {
+            $_menuDate = date('d.m.Y');
+        }
+
+        $_menuItems = array();
+
+        foreach (explode("\n", $_csv) as $_row) {
+
+            // parse csv row into a array separated by ;
+            $_csvRow = explode(";", $_row);
+
+            // get item from row
+            $_rowItem = $_csvRow[3];
+
+            // get date from row
+            $_rowDate = $_csvRow[0];
+
+            // put item into the menu array
+            if ($_menuDate == $_rowDate) {
+                $_menuItems[] = $_rowItem;
+            }
+        }
+
+        return $_menuItems;
+    }
+
+    function get_some_food()
+    {
+        $_menu = get_menu();
+
+        // return nothing if menu is empty
+        if (empty($_menu)) {
+            return "nothing";
+        }
+
+        // return random item from the menu
+        $_randomFood = $_menu[array_rand($_menu)];
+        return $_randomFood;
+    }
+
+    echo "    <h2>" . get_some_food() . "</h2>";
 
     ?>
 
@@ -137,6 +195,7 @@
 <footer>
     <p>2016, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
 
+    <p>(Universität Regensburg Mensa Edition)</p>
     <p>whatthefuckshouldlukashaveforlunch on <a href="https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com">Github</a>
     </p>
 </footer>
