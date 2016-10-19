@@ -118,11 +118,36 @@
      * Time: 14:07
      */
 
-    function gimmeSomeFood()
+    function is_weekend()
     {
-        $_csv = file_get_contents('http://www.stwno.de/infomax/daten-extern/csv/UNI-R/40.csv');
-        $_currentDate = date("d.m.Y");
-        $_menuToday = array();
+        $_weekDay = date('w');
+
+        return ($_weekDay == 0 || $_weekDay == 6);
+    }
+
+    function get_mensa_menu_url()
+    {
+        $_weekNumber = date("W");
+
+        // if page is opened on the weekend, use the menu of the following week
+        if (is_weekend()) {
+            $_weekNumber++;
+        }
+
+        return "http://www.stwno.de/infomax/daten-extern/csv/UNI-R/$_weekNumber.csv";
+    }
+
+    function get_menu()
+    {
+        $_csv = file_get_contents(get_mensa_menu_url());
+
+        if (is_weekend()) {
+            $_menuDate = date('d.m.Y', strtotime('next monday'));
+        } else {
+            $_menuDate = date('d.m.Y');
+        }
+
+        $_menuItems = array();
 
         foreach (explode("\n", $_csv) as $_row) {
 
@@ -135,23 +160,30 @@
             // get date from row
             $_rowDate = $_csvRow[0];
 
-            // make sure only today's items get added to the current menu
-            if ($_currentDate == $_rowDate) {
-                $_menuToday[] = $_rowItem;
+            // put item into the menu array
+            if ($_menuDate == $_rowDate) {
+                $_menuItems[] = $_rowItem;
             }
         }
 
-        // return nothing if todays menu is empty
-        if (empty($_menuToday)) {
+        return $_menuItems;
+    }
+
+    function get_some_food()
+    {
+        $_menu = get_menu();
+
+        // return nothing if menu is empty
+        if (empty($_menu)) {
             return "nothing";
         }
 
-        // return item from todays menu
-        $_randomFood = $_menuToday[array_rand($_menuToday)];
+        // return random item from the menu
+        $_randomFood = $_menu[array_rand($_menu)];
         return $_randomFood;
     }
 
-    echo "    <h2>" . gimmeSomeFood() . "</h2>";
+    echo "    <h2>" . get_some_food() . "</h2>";
 
     ?>
 
