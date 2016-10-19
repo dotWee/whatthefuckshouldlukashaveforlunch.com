@@ -118,6 +118,11 @@
      * Time: 14:07
      */
 
+    function remove_brackets($string)
+    {
+        return preg_replace('/\([^)]*\)|[()]/', '', $string);
+    }
+
     function is_weekend()
     {
         $_weekDay = date('w');
@@ -180,7 +185,7 @@
 
         // return random item from the menu
         $_randomFood = $_menu[array_rand($_menu)];
-        return $_randomFood;
+        return remove_brackets($_randomFood);
     }
 
     echo "    <h2>" . get_some_food() . "</h2>";
