@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>What The Fuck Should Lukas Eat For Lunch</title>
+    <title>What The Fuck Should Lukas Have For Lunch</title>
     <link rel="shortcut icon" href="favicon.png">
     <meta charset="utf-8">
 
