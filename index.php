@@ -79,6 +79,7 @@
 
         footer > * {
             font-family: "Lucida Console", Monaco, monospace;
+            line-height: 135%;
             font-size: 0.80rem;
             text-align: left;
             margin: 0.05em;
