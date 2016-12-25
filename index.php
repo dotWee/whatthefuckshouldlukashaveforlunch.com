@@ -131,6 +131,8 @@
 
     function get_mensa_menu_url()
     {
+        date_default_timezone_set('Europe/Berlin');
+
         $_weekNumber = date("W");
 
         // if page is opened on the weekend, use the menu of the following week
