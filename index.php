@@ -175,9 +175,8 @@
         return $_menuItems;
     }
 
-    function get_content()
+    function get_content($_menu)
     {
-        $_menu = get_menu();
 
         // return warning if menu is empty
         if (empty($_menu)) {
@@ -199,11 +198,24 @@
         }
     }
 
-    echo get_content();
+    function get_content_footer($_menu)
+    {
+        $_return_string = '<a href="?">%s</a>';
+        if (empty($_menu)) {
+            return sprintf($_return_string, "Refresh page");
+        } else {
+            return sprintf($_return_string, "Lukas doesn't fucking want that");
+        }
+    }
+
+    $_menu = get_menu();
+
+    echo get_content($_menu);
+    echo get_content_footer($_menu);
 
     ?>
 
-    <a href="?">Lukas doesn't fucking want that</a>
+
 </section>
 
 <footer>
