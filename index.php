@@ -108,8 +108,6 @@
 <body>
 
 <section>
-    <h1>Lukas should have</h1>
-
     <?php
 
     /**
@@ -175,25 +173,33 @@
         return $_menuItems;
     }
 
-    function get_some_food()
+    function get_content()
     {
         $_menu = get_menu();
 
-        // return nothing if menu is empty
+        // return warning if menu is empty
         if (empty($_menu)) {
-            return "nothing";
-        }
+            return "<h1>Mensa seems closed!</h1>";
 
-        // return random item from the menu
-        $_randomFood = $_menu[array_rand($_menu)];
-        return remove_brackets($_randomFood);
+        } else {
+            $_lunch_unformated = "<h1>Lukas should have</h1><h2>%s</h2><h1>for lunch.</h1>";
+
+            // select random food from menu
+            $_random_food = $_menu[array_rand($_menu)];
+
+            // remove brackets from string
+            $_random_food_cleared = remove_brackets($_random_food);
+
+            // format string
+            $_lunch_formated = sprintf($_lunch_unformated, $_random_food_cleared);
+
+            return $_lunch_formated;
+        }
     }
 
-    echo "    <h2>" . get_some_food() . "</h2>";
+    echo get_content();
 
     ?>
-
-    <h1>for lunch.</h1>
 
     <a href="?">Lukas doesn't fucking want that</a>
 </section>
