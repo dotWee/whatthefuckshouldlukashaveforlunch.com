@@ -140,6 +140,7 @@
             $_weekNumber++;
         }
 
+        $_weekNumber = intval($_weekNumber);
         return "http://www.stwno.de/infomax/daten-extern/csv/UNI-R/$_weekNumber.csv";
     }
 
