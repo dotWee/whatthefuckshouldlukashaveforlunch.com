@@ -122,38 +122,18 @@
         return preg_replace('/\([^)]*\)|[()]/', '', $string);
     }
 
-    function is_weekend()
-    {
-        $_weekDay = date('w');
-
-        return ($_weekDay == 0 || $_weekDay == 6);
-    }
-
     function get_mensa_menu_url()
     {
         date_default_timezone_set('Europe/Berlin');
+        $_weekNumber = intval(date("W"));
 
-        $_weekNumber = date("W");
-
-        // if page is opened on the weekend, use the menu of the following week
-        if (is_weekend()) {
-            $_weekNumber++;
-        }
-
-        $_weekNumber = intval($_weekNumber);
         return "http://www.stwno.de/infomax/daten-extern/csv/UNI-R/$_weekNumber.csv";
     }
 
     function get_menu()
     {
         $_csv = file_get_contents(get_mensa_menu_url());
-
-        if (is_weekend()) {
-            $_menuDate = date('d.m.Y', strtotime('next monday'));
-        } else {
-            $_menuDate = date('d.m.Y');
-        }
-
+        $_menuDate = date('d.m.Y');
         $_menuItems = array();
 
         foreach (explode("\n", $_csv) as $_row) {
