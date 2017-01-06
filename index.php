@@ -7,7 +7,7 @@
 
     <!-- Search engine control -->
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Coding'n personal stuff">
+    <meta name="description" content="What The Fuck Should Lukas Have For Lunch">
     <meta name="author" content="Lukas Wolfsteiner">
     <meta name="publisher" content="Lukas Wolfsteiner">
     <meta name="copyright" content="Lukas Wolfsteiner">
