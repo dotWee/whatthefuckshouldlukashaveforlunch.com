@@ -175,7 +175,10 @@
             // format string
             $_lunch_formated = sprintf($_lunch_unformated, $_random_food_cleared);
 
-            return $_lunch_formated;
+            // convert string from iso-8859-1 to utf-8
+            $_lunch_encoded = utf8_encode($_lunch_formated);
+
+            return $_lunch_encoded;
         }
     }
 
