@@ -16,7 +16,7 @@ header("Pragma: no-cache");
 
     <!-- Search engine control -->
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Coding'n personal stuff">
+    <meta name="description" content="What The Fuck Should Lukas Have For Lunch">
     <meta name="author" content="Lukas Wolfsteiner">
     <meta name="publisher" content="Lukas Wolfsteiner">
     <meta name="copyright" content="Lukas Wolfsteiner">
@@ -117,8 +117,6 @@ header("Pragma: no-cache");
 <body>
 
 <section>
-    <h1>Lukas should have</h1>
-
     <?php
 
     /**
@@ -133,21 +131,10 @@ header("Pragma: no-cache");
         return preg_replace('/\([^)]*\)|[()]/', '', $string);
     }
 
-    function is_weekend()
-    {
-        $_weekDay = date('w');
-
-        return ($_weekDay == 0 || $_weekDay == 6);
-    }
-
     function get_mensa_menu_url()
     {
-        $_weekNumber = date("W");
-
-        // if page is opened on the weekend, use the menu of the following week
-        if (is_weekend()) {
-            $_weekNumber++;
-        }
+        date_default_timezone_set('Europe/Berlin');
+        $_weekNumber = intval(date("W"));
 
         return "http://www.stwno.de/infomax/daten-extern/csv/UNI-R/$_weekNumber.csv";
     }
@@ -155,13 +142,7 @@ header("Pragma: no-cache");
     function get_menu()
     {
         $_csv = file_get_contents(get_mensa_menu_url());
-
-        if (is_weekend()) {
-            $_menuDate = date('d.m.Y', strtotime('next monday'));
-        } else {
-            $_menuDate = date('d.m.Y');
-        }
-
+        $_menuDate = date('d.m.Y');
         $_menuItems = array();
 
         foreach (explode("\n", $_csv) as $_row) {
@@ -184,31 +165,54 @@ header("Pragma: no-cache");
         return $_menuItems;
     }
 
-    function get_some_food()
+    function get_content($_menu)
     {
-        $_menu = get_menu();
 
-        // return nothing if menu is empty
+        // return warning if menu is empty
         if (empty($_menu)) {
-            return "nothing";
-        }
+            return "<h1>Mensa seems closed!</h1>";
 
-        // return random item from the menu
-        $_randomFood = $_menu[array_rand($_menu)];
-        return remove_brackets($_randomFood);
+        } else {
+            $_lunch_unformated = "<h1>Lukas should have</h1><h2>%s</h2><h1>for lunch.</h1>";
+
+            // select random food from menu
+            $_random_food = $_menu[array_rand($_menu)];
+
+            // remove brackets from string
+            $_random_food_cleared = remove_brackets($_random_food);
+
+            // format string
+            $_lunch_formated = sprintf($_lunch_unformated, $_random_food_cleared);
+
+            // convert string from iso-8859-1 to utf-8
+            $_lunch_encoded = utf8_encode($_lunch_formated);
+
+            return $_lunch_encoded;
+        }
     }
 
-    echo "    <h2>" . get_some_food() . "</h2>";
+    function get_content_footer($_menu)
+    {
+        $_return_string = '<a href="?">%s</a>';
+        if (empty($_menu)) {
+            return sprintf($_return_string, "Refresh page");
+        } else {
+            return sprintf($_return_string, "Lukas doesn't fucking want that");
+        }
+    }
+
+    $_menu = get_menu();
+
+    echo get_content($_menu);
+    echo get_content_footer($_menu);
 
     ?>
 
-    <h1>for lunch.</h1>
 
-    <a href="?">Lukas doesn't fucking want that</a>
 </section>
 
 <footer>
-    <p>2016, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
+    <p><?php echo date("Y"); ?>, <a href="https://dotwee.de">Lukas Wolfsteiner</a></p>
 
     <p>(Universität Regensburg Mensa Edition)</p>
     <p>whatthefuckshouldlukashaveforlunch on <a href="https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com">Github</a>
