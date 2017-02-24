@@ -12,6 +12,7 @@ header("Pragma: no-cache");
 <head>
     <title>What The Fuck Should Lukas Have For Lunch</title>
     <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="utf-8">
 
     <!-- Search engine control -->
@@ -29,72 +30,6 @@ header("Pragma: no-cache");
     <meta name="HandheldFriendly" content="True">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        html, body {
-            font-family: "Times New Roman", Times, serif;
-            letter-spacing: 0.01rem;
-            text-align: center;
-            overflow: hidden;
-            padding: 0;
-            margin: 0;
-
-            height: 100%;
-            width: 100%;
-        }
-
-        section * {
-            display: block;
-        }
-
-        section {
-            position: relative;
-            top: 50%;
-
-            -webkit-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%);
-            margin: 0 auto;
-
-            max-width: 25rem;
-            min-width: 12rem;
-            width: 70%;
-        }
-
-        section a {
-            line-height: 120%;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin: 1em;
-        }
-
-        footer {
-            white-space: nowrap;
-            left: 0;
-            bottom: 0;
-            position: fixed;
-            padding: 0;
-            margin: 0.8rem;
-        }
-
-        footer > * {
-            font-family: "Lucida Console", Monaco, monospace;
-            line-height: 135%;
-            font-size: 0.80rem;
-            text-align: left;
-            margin: 0.05em;
-            padding: 0;
-        }
-    </style>
 
     <script>
         (function (i, s, o, g, r, a, m) {
