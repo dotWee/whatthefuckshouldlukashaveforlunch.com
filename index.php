@@ -24,7 +24,6 @@
      * Time: 14:07
      */
 
-    date_default_timezone_set('Europe/Berlin');
     include_once "lib/api.php";
 
     $_menu = get_menu();
