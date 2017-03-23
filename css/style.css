@@ -53,10 +53,13 @@ footer {
     margin: 0.8rem;
 }
 
-footer > * {
+footer > *, h3 {
     font-family: "Lucida Console", Monaco, monospace;
     line-height: 135%;
     font-size: 0.80rem;
+}
+
+footer > * {
     text-align: left;
     margin: 0.05em;
     padding: 0;
