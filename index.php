@@ -7,14 +7,17 @@
     <link rel="shortcut icon" href="favicon.png">
     <link rel="stylesheet" href="css/style.css">
 
-    <?php include_once "parts/meta.php" ?>
+    <?php
+    include_once "parts/meta.php";
+    include_once "parts/analytics.php"
+    ?>
 
 </head>
 
 <body>
-<?php include_once "parts/analytics.php" ?>
 
 <section>
+
     <?php
 
     /**
@@ -29,7 +32,6 @@
     $_menu = get_menu();
     echo get_content($_menu);
     echo get_content_footer($_menu);
-
     ?>
 
 </section>
