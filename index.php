@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
 
     <?php include_once "parts/meta.php" ?>
+
 </head>
+
 <body>
 <?php include_once "parts/analytics.php" ?>
 
