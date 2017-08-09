@@ -1,37 +1,67 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+﻿/* Default page style */
+html, body {
+    font-family: "Times New Roman", Times, serif;
+    letter-spacing: 0.01rem;
+    text-align: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: 100%;
     width: 100%;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+/* Handle the main section*/
+section * {
+    display: block;
+}
+
+section {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: 0 auto;
+    max-width: 25rem;
+    min-width: 12rem;
+    width: 70%;
+}
+
+section a {
+    line-height: 120%;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 1em;
+}
+
+/* Footer style */
+footer {
+    white-space: nowrap;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    padding: 0;
+    margin: 0.8rem;
+}
+
+/* Footer style */
+footer > *, h3 {
+    font-family: "Lucida Console", Monaco, monospace;
+    line-height: 135%;
+    font-size: 0.80rem;
+}
+
+footer > * {
+    text-align: left;
+    margin: 0.05em;
+    padding: 0;
 }
