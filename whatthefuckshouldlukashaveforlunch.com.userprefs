@@ -1,6 +1,8 @@
 ﻿<Properties StartupConfiguration="{CE01449B-5EEB-4EF9-9E18-5FBEE8886354}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="whatthefuckshouldlukashaveforlunch.com Status">
     <Files>
+      <File FileName="whatthefuckshouldlukashaveforlunch.com/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="whatthefuckshouldlukashaveforlunch.com/Views/Home/Index.cshtml" Line="1" Column="1" />
       <File FileName="whatthefuckshouldlukashaveforlunch.com Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

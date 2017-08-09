@@ -10,6 +10,8 @@ namespace whatthefuckshouldlukashaveforlunch.com.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "What The Fuck Should Lukas Have For Lunch";
+            
             return View();
         }
     }
