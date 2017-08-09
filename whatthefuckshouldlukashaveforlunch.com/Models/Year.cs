@@ -1,10 +1,11 @@
 ﻿using System;
 namespace whatthefuckshouldlukashaveforlunch.com.Models
 {
-    public class Year
+    public static class Year
     {
-        public Year()
+        public static string Value 
         {
+            get => DateTime.Today.Year.ToString();
         }
     }
 }
