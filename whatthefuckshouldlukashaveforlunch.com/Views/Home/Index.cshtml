@@ -1,7 +1,17 @@
-﻿<section>
+﻿@{
+    bool Errorfree = (bool) @ViewData["Errorfree"];
+}
+
+@if (Errorfree)
+{
     <h1>Lukas should have</h1>
     <h2>@ViewData["Food"]</h2>
     <h1>for lunch.</h1>
+}
 
-    <a href="?">Lukas doesn't fucking want that</a>
-</section>
+else
+{
+    <h1>Mensa seems closed!</h1>
+}
+
+    <a href="?">@ViewData["Message"]</a>

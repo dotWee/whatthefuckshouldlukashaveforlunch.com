@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using whatthefuckshouldlukashaveforlunch.com.Models;
+using whatthefuckshouldlukashaveforlunch.com.Models.Exceptions;
 using whatthefuckshouldlukashaveforlunch.com.Models.Helper;
 
 namespace whatthefuckshouldlukashaveforlunch.com.Models
@@ -54,13 +56,21 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
                 // Parse CSV line
                 var foodValues = line.Split(";", StringSplitOptions.RemoveEmptyEntries);
 
-                var foodDate = DateHelper.ParseDate(foodValues[0]);
-                var foodName = foodValues[3];
+				var foodName = foodValues[3];
+				var foodDate = foodValues[0];
+
+                // Both name and date have to be not empty or null
+                if (string.IsNullOrEmpty(foodName) && string.IsNullOrEmpty(foodDate))
+                {
+                    throw new MensaClosedException("yea");
+                }
+
 
                 // If date of current lines matches today, add to list
-                if (DateHelper.IsSameDay(DateTime.Today, foodDate))
+                var parsedFoodDate = DateHelper.ParseDate(foodDate);
+                if (DateHelper.IsSameDay(DateTime.Today, parsedFoodDate))
                 {
-                    _foods.Add(new Food(foodName, foodDate));
+                    _foods.Add(new Food(foodName, parsedFoodDate));
 				}
 			}
 
@@ -71,5 +81,6 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
         public Food RandomItem => _foods[new Random().Next(0, _foods.Count)];
 
         public bool IsEmpty => _foods.Count == 0;
+
     }
 }
