@@ -8,11 +8,10 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
 {
     public class Meal
     {
+        private int Weeknumber { get; set; }
 
-        int Weeknumber;
-        List<Food> Foods = new List<Food>();
-        string RawFoods = string.Empty;
-        bool isExecuting = false;
+        private List<Food> _foods = new List<Food>();
+        private string _rawFoods = string.Empty;
 
         public Meal(int weeknumber)
         {
@@ -25,25 +24,25 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
         void FetchRaw()
         {
             // Create new request
-			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(Endpoint);
+			var request = (HttpWebRequest) WebRequest.Create(Endpoint);
 			
             // Catch response
-            HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+            var response = (HttpWebResponse) request.GetResponse();
 
             // Read response into string
-			StreamReader sr = new StreamReader(response.GetResponseStream());
-			RawFoods = sr.ReadToEnd();
-			sr.Close();
+			var reader = new StreamReader(response.GetResponseStream());
+			_rawFoods = reader.ReadToEnd();
+			reader.Close();
         }
 
         void SplitRaw()
         {
             // Split raw string into an array of lines
-            string[] lines = RawFoods.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            var lines = _rawFoods.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
             // For each line in the raw string
-            bool firstLine = true;
-			foreach (string line in lines)
+            var firstLine = true;
+			foreach (var line in lines)
 			{
                 // Skip CSV header line
                 if (firstLine)
@@ -53,15 +52,15 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
                 }
 
                 // Parse CSV line
-                string[] FoodValues = line.Split(";", StringSplitOptions.RemoveEmptyEntries);
+                var foodValues = line.Split(";", StringSplitOptions.RemoveEmptyEntries);
 
-                DateTime FoodDate = DateHelper.ParseDate(FoodValues[0]);
-                string FoodName = FoodValues[3];
+                var foodDate = DateHelper.ParseDate(foodValues[0]);
+                var foodName = foodValues[3];
 
                 // If date of current lines matches today, add to list
-                if (DateHelper.IsSameDay(DateTime.Today, FoodDate))
+                if (DateHelper.IsSameDay(DateTime.Today, foodDate))
                 {
-                    Foods.Add(new Food(FoodName, FoodDate));
+                    _foods.Add(new Food(foodName, foodDate));
 				}
 			}
 
@@ -69,10 +68,8 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
 
         private string Endpoint => $"http://www.stwno.de/infomax/daten-extern/csv/UNI-R/{Weeknumber}.csv";
 
-        public Food GetRandom() 
-        {
-            int RandomPosition = new Random().Next(0, Foods.Count);
-            return Foods[RandomPosition];
-        }
+        public Food RandomItem => _foods[new Random().Next(0, _foods.Count)];
+
+        public bool IsEmpty => _foods.Count == 0;
     }
 }
