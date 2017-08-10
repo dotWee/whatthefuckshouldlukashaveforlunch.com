@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
 
@@ -11,6 +11,8 @@
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.2" />
+    <PackageReference Include="OpenWebClient.Source" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +23,28 @@
     <Content Remove="wwwroot\js\site.js" />
     <Content Remove="Views\Home\About.cshtml" />
     <Content Remove="Views\Home\Contact.cshtml" />
+    <Content Remove="wwwroot\css\site.css" />
+    <Content Remove="wwwroot\images\banner1.svg" />
+    <Content Remove="wwwroot\images\banner2.svg" />
+    <Content Remove="wwwroot\images\banner3.svg" />
+    <Content Remove="wwwroot\images\banner4.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\EmptyClass.cs" />
+    <Compile Remove="Models\EmptyInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="wwwroot\js\site.js">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Models\Helper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="wwwroot\css\site.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
   </ItemGroup>
 </Project>
