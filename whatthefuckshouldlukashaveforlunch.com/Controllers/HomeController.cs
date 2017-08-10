@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using whatthefuckshouldlukashaveforlunch.com.Models;
+using whatthefuckshouldlukashaveforlunch.com.Models.Exceptions;
 using whatthefuckshouldlukashaveforlunch.com.Models.Helper;
 
 namespace whatthefuckshouldlukashaveforlunch.com.Controllers
@@ -9,10 +10,21 @@ namespace whatthefuckshouldlukashaveforlunch.com.Controllers
         public IActionResult Index()
         {
             ViewData["Title"] = "What The Fuck Should Lukas Have For Lunch";
+            ViewData["Errorfree"] = true;
             ViewData["Year"] = Year.Value;
 
-			var meal = new Meal(DateHelper.CurrentWeeknumber);
-            ViewData["Food"] = meal.RandomItem.Name;
+            try {
+				Meal meal = new Meal(DateHelper.CurrentWeeknumber);
+                ViewData["Message"] = "Lukas doesn't fucking want that";
+				ViewData["Food"] = meal.RandomItem.Name;
+			}
+            catch
+            {
+                ViewData["Errorfree"] = false;
+				ViewData["Message"] = "Click to refresh";
+
+			}
+
 
             return View();
         }
