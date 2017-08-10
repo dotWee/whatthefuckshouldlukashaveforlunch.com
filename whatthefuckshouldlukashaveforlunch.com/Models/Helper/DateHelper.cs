@@ -9,7 +9,7 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models.Helper
 
         public static int TodaysDayOfYear = DateTime.Today.DayOfYear;
 
-        public static DateTime ParseDate(string Value) => DateTime.ParseExact(Value, Format, null);
+        public static DateTime ParseDate(string value) => DateTime.ParseExact(value, Format, null);
 
 		public static int CurrentWeeknumber = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 
