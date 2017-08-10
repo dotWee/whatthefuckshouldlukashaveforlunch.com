@@ -21,7 +21,7 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
             SplitRaw();
         }
 
-        void FetchRaw()
+        private void FetchRaw()
         {
             // Create new request
 			var request = (HttpWebRequest) WebRequest.Create(Endpoint);
@@ -35,7 +35,7 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
 			reader.Close();
         }
 
-        void SplitRaw()
+        private void SplitRaw()
         {
             // Split raw string into an array of lines
             var lines = _rawFoods.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
