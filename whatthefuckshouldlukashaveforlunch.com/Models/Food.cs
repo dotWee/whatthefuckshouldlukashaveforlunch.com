@@ -7,21 +7,32 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models
     {
         public Food(string name, DateTime date)
         {
-            Name = ConvertToUtf8(name);
+            Name = name;
+            ConvertToUtf8();
+            RemoveBrackets();
+
             Date = date;
         }
 
-        private string ConvertToUtf8(string unformated)
+        public string Name { get; set; }
+		public DateTime Date { get; }
+
+        private void ConvertToUtf8()
         {
 			Encoding iso = Encoding.GetEncoding("ISO-8859-1");
 			Encoding utf8 = Encoding.UTF8;
 
 			byte[] utfBytes = utf8.GetBytes(Name);
 			byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
-			return iso.GetString(isoBytes);
+			Name = iso.GetString(isoBytes);
         }
 
-        public string Name { get; }
-        public DateTime Date { get; }
+        private void RemoveBrackets()
+        {
+            string Pattern = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
+            Name = System.Text.RegularExpressions.Regex.Replace(Name, Pattern, "");
+        }
+
+
     }
 }
