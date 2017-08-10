@@ -5,7 +5,7 @@ namespace whatthefuckshouldlukashaveforlunch.com.Models.Helper
 {
     public class DateHelper
     {
-        private static string Format = "dd.MM.yyyy";
+        private const string Format = "dd.MM.yyyy";
 
         public static int TodaysDayOfYear = DateTime.Today.DayOfYear;
 
