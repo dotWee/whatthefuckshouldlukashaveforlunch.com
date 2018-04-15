@@ -35,6 +35,7 @@ section a {
 }
 
 h1 {
+    font-weight: normal;
     font-size: 3rem;
     margin: 0;
 }
@@ -45,8 +46,6 @@ h2 {
 }
 
 footer {
-    white-space: nowrap;
-    left: 0;
     bottom: 0;
     position: fixed;
     padding: 0;
@@ -55,7 +54,6 @@ footer {
 
 footer > *, h3 {
     font-family: "Lucida Console", Monaco, monospace;
-    line-height: 135%;
     font-size: 0.80rem;
 }
 
