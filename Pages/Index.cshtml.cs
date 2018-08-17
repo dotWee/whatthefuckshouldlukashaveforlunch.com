@@ -15,20 +15,20 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
 {
     public class IndexModel : PageModel
     {
-        public string ItemName { get; set; }
+        public string ItemName { get; private set; }
 
-        public bool ShowClosedMessage { get; set; } = false;
+        public bool ShowClosedMessage { get; private set; } = false;
 
         public void OnGet()
         {
-            DayOfWeek today = DateTime.Now.DayOfWeek;
+            var today = DateTime.Now.DayOfWeek;
             if (today == DayOfWeek.Saturday || today == DayOfWeek.Sunday) {
                 ShowClosedMessage = true;
             }
 
             else {
-                Menu menu = MensaProxy.GetMenu(today);
-                Item randomItem = menu.GetRandomItem();
+                var menu = MensaProxy.GetMenu(today);
+                var randomItem = menu.GetRandomItem();
 
                 if (randomItem == null)
                 {
@@ -43,14 +43,13 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
         }
     }
 
-    static class MensaProxy
+    internal static class MensaProxy
     {
+        private static readonly DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Item>));
 
-        internal static DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Item>));
+        private static string GetEndpoint(DayOfWeek weekday) => "http://132.199.139.24:9001/mensa/uni/" + Item.WeekdayValuesMap[weekday];
 
-        internal static string GetEndpoint(DayOfWeek weekday) => "http://132.199.139.24:9001/mensa/uni/" + Item.WeekdayValuesMap[weekday];
-
-        internal static string DownloadJson(DayOfWeek weekday)
+        private static string DownloadJson(DayOfWeek weekday)
         {
             string json;
             using (var webClient = new System.Net.WebClient())
@@ -63,10 +62,10 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
             return json;
         }
 
-        internal static List<Item> ReadItemsFromJson(string json)
+        private static List<Item> ReadItemsFromJson(string json)
         {
             List<Item> items;
-            using (MemoryStream stream = new MemoryStream(System.Text.Encoding.Default.GetBytes(json)))
+            using (var stream = new MemoryStream(System.Text.Encoding.Default.GetBytes(json)))
             {
                 items = (List<Item>)serializer.ReadObject(stream);
             }
@@ -76,9 +75,9 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
 
         public static Menu GetMenu(DayOfWeek weekday)
         {
-            string json = DownloadJson(weekday);
+            var json = DownloadJson(weekday);
 
-            List<Item> items = ReadItemsFromJson(json);
+            var items = ReadItemsFromJson(json);
 
             Debug.WriteLine($"Menu for day={weekday} has item count={items.Count}");
             return new Menu(weekday, items);
@@ -93,7 +92,8 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
             this.weekday = weekday;
             this.items = items;
         }
-        public DayOfWeek weekday { get; }
+
+        private DayOfWeek weekday { get; }
         
         [DataMember]
         public List<Item> items { get; }
@@ -114,19 +114,21 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
     [DataContract]
     public class Item
     {
-        public static Dictionary<DayOfWeek, string> WeekdayValuesMap;
-        public static string[] WeekdayValues;
+        public static readonly Dictionary<DayOfWeek, string> WeekdayValuesMap;
+        private static string[] WeekdayValues;
 
         static Item()
         {
             WeekdayValues = new string[5] { "mo", "di", "mi", "do", "fr" };
 
-            WeekdayValuesMap = new Dictionary<DayOfWeek, string>();
-            WeekdayValuesMap.Add(DayOfWeek.Monday, WeekdayValues[0]);
-            WeekdayValuesMap.Add(DayOfWeek.Tuesday, WeekdayValues[1]);
-            WeekdayValuesMap.Add(DayOfWeek.Wednesday, WeekdayValues[2]);
-            WeekdayValuesMap.Add(DayOfWeek.Thursday, WeekdayValues[3]);
-            WeekdayValuesMap.Add(DayOfWeek.Friday, WeekdayValues[4]);
+            WeekdayValuesMap = new Dictionary<DayOfWeek, string>
+            {
+                {DayOfWeek.Monday, WeekdayValues[0]},
+                {DayOfWeek.Tuesday, WeekdayValues[1]},
+                {DayOfWeek.Wednesday, WeekdayValues[2]},
+                {DayOfWeek.Thursday, WeekdayValues[3]},
+                {DayOfWeek.Friday, WeekdayValues[4]}
+            };
         }
 
         public Item()
