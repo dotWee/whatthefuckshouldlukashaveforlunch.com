@@ -1,0 +1,22 @@
+﻿@page
+@model IndexModel
+
+<section>
+    @if(@Model.ShowClosedMessage)
+    {
+        <h2>Mensa seems closed!</h2>
+
+        <br>
+
+        <a href="?">Refresh page</a>
+    }
+    
+    else
+    {
+        <h1>Lukas should have</h1>
+        <h2>@Model.ItemName</h2>
+        <h1>for lunch.</h1>
+
+        <a href="?">Lukas doesn't fucking want that</a>
+    }
+</section>
