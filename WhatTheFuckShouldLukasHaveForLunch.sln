@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatTheFuckShouldLukasHaveForLunch", "WhatTheFuckShouldLukasHaveForLunch\WhatTheFuckShouldLukasHaveForLunch.csproj", "{E6FF8FBB-DF64-4723-93A9-7BBE37506855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatTheFuckShouldLukasHaveForLunch.Test", "WhatTheFuckShouldLukasHaveForLunch.Test\WhatTheFuckShouldLukasHaveForLunch.Test.csproj", "{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{E6FF8FBB-DF64-4723-93A9-7BBE37506855}.Release|x64.Build.0 = Release|Any CPU
 		{E6FF8FBB-DF64-4723-93A9-7BBE37506855}.Release|x86.ActiveCfg = Release|Any CPU
 		{E6FF8FBB-DF64-4723-93A9-7BBE37506855}.Release|x86.Build.0 = Release|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Debug|x64.Build.0 = Debug|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Debug|x86.Build.0 = Debug|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Release|x64.ActiveCfg = Release|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Release|x64.Build.0 = Release|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Release|x86.ActiveCfg = Release|Any CPU
+		{39E6B6C5-6CEE-43DB-9585-108AB5EC5F33}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

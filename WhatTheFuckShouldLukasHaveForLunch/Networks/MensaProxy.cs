@@ -7,7 +7,7 @@ using WhatTheFuckShouldLukasHaveForLunch.Models;
 
 namespace WhatTheFuckShouldLukasHaveForLunch.Networks
 {
-    static class MensaProxy
+    public static class MensaProxy
     {
         private static readonly DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Item>));
 
@@ -26,7 +26,7 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Networks
             return json;
         }
 
-        private static List<Item> ReadItemsFromJson(string json)
+        public static List<Item> ReadItemsFromJson(string json)
         {
             List<Item> items;
             using (var stream = new MemoryStream(System.Text.Encoding.Default.GetBytes(json)))
