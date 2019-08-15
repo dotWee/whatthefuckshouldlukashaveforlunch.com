@@ -499,3 +499,5 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/dotnetcore,aspnetcore,visualstudio,visualstudiocode
+
+WhatTheFuckShouldLukasHaveForLunch.Web/wwwroot/lib/
