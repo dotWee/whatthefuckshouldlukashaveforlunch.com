@@ -46,9 +46,9 @@ this repository contains the source code of [whatthefuckshouldlukashaveforlunch]
 
 3. now browse to [localhost:5000](http://localhost:5000)
 
-### or run using [docker](https://www.docker.com/)
+### run using a self-made docker [docker](https://www.docker.com/) image
 
-1. build docker image:
+1. build the docker image:
 
     ```bash
     $ docker build \
@@ -56,13 +56,32 @@ this repository contains the source code of [whatthefuckshouldlukashaveforlunch]
         -t whatthefuckshouldlukashaveforlunch .
     ```
 
-2. run the new docker image:
+2. and run the fresh docker image:
 
     ```bash
     $ docker run \
         --rm -it \
         -p 8080:80 \
         whatthefuckshouldlukashaveforlunch
+    ```
+
+3. now browse to [localhost:8080](http://localhost:8080)
+
+### or pull the [docker](https://www.docker.com/) image from the docker hub
+
+1. pull the docker image:
+
+    ```bash
+    $ docker pull dotwee/whatthefuckshouldlukashaveforlunch
+    ```
+
+2. and run the docker image:
+
+    ```bash
+    $ docker run \
+        --rm -it \
+        -p 8080:80 \
+        dotwee/whatthefuckshouldlukashaveforlunch
     ```
 
 3. now browse to [localhost:8080](http://localhost:8080)
