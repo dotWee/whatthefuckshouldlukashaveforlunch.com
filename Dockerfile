@@ -9,10 +9,10 @@ RUN dotnet restore
 # copy everything else and build app
 COPY . ./
 WORKDIR /source
-RUN dotnet publish -c release -o /app --no-restore
+RUN dotnet publish -c Release -o /app --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
-COPY --from=build /app ./
-ENTRYPOINT ["dotnet", "WhatTheFuckShouldLukasHaveForLunch.dll"]
+COPY --from=build /app .
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet WhatTheFuckShouldLukasHaveForLunch.dll
