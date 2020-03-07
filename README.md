@@ -1,4 +1,4 @@
-# [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/)
+# [whatthefuckshouldlukashaveforlunch](http://heroku.whatthefuckshouldlukashaveforlunch.com/)
 
 [![GitHub License](https://img.shields.io/github/license/dotWee/startpage)](https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com/blob/master/LICENSE)
 
@@ -6,7 +6,7 @@ _what the fuck should lukas have for lunch*?_
 
 <sub>* at the regensburg university of applied sciences canteen </sub>
 
-this repository contains the source code of [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/), written in some `c#` using the `.net core 3` framework.
+this repository contains the source code of [whatthefuckshouldlukashaveforlunch](http://heroku.whatthefuckshouldlukashaveforlunch.com/), written in some `c#` using the `.net core 3` framework.
 
 > **anecdote**: this code exists since i started programming. developed with absolutly zero knowledge. i'll probably never touch this code again.
 
