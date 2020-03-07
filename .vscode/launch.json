@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch.Web/bin/Debug/netcoreapp2.2/WhatTheFuckShouldLukasHaveForLunch.Web.dll",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/WhatTheFuckShouldLukasHaveForLunch.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch.Web",
+            "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
