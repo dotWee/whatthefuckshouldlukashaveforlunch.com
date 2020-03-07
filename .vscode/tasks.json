@@ -7,9 +7,11 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch/WhatTheFuckShouldLukasHaveForLunch.csproj"
+                "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "publish",
@@ -17,9 +19,11 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch/WhatTheFuckShouldLukasHaveForLunch.csproj"
+                "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "watch",
@@ -28,9 +32,39 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch/WhatTheFuckShouldLukasHaveForLunch.csproj"
+                "${workspaceFolder}/WhatTheFuckShouldLukasHaveForLunch.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "docker-build",
+            "command": "docker",
+            "type": "process",
+            "args": [
+                "build",
+                "--rm",
+                "--pull",
+                "-t",
+                "whatthefuckshouldlukashaveforlunch",
+                "${workspaceFolder}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "docker-run",
+            "command": "docker",
+            "type": "process",
+            "args": [
+                "run",
+                "--rm",
+                "-it",
+                "-p",
+                "8080:80",
+                "whatthefuckshouldlukashaveforlunch"
+            ],
+            "problemMatcher": []
         }
     ]
 }
