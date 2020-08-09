@@ -29,24 +29,16 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
         {
             var client = _clientFactory.CreateClient();
 
-            try
+            MealModel meal = new MealModel(DateHelper.CurrentWeeknumber, client);
+            var randomItem = await meal.GetRandomFoodAsync();
+            if (randomItem != null)
             {
-                MealModel meal = new MealModel(DateHelper.CurrentWeeknumber, client);
-                var randomItem = await meal.GetRandomFoodAsync();
-                if (randomItem != null)
-                {
-                    ViewData["food"] = randomItem.Name;
-                    Console.WriteLine($"Index Page: Meal={meal.ToString()} ViewData[food]={randomItem.ToString()}");
-                    return Page();
-                }
-                else
-                {
-                    return RedirectToPage("./Closed");
-                }
+                ViewData["food"] = randomItem.Name;
+                Console.WriteLine($"Index Page: Meal={meal.ToString()} ViewData[food]={randomItem.ToString()}");
+                return Page();
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
                 return RedirectToPage("./Closed");
             }
         }
