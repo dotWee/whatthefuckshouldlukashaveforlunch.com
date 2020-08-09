@@ -1,4 +1,5 @@
 .vscode/
+.github/
 art/
 bin/
 node_modules/
