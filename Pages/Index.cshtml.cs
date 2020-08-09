@@ -23,17 +23,18 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
 
         public IActionResult OnGet()
         {
-            // ViewData["food"] = "Example food";
+            // ViewData["food"] = "Seelachs Müllerin mit Kartoffel-Gurkensalat";
             // return Page();
 
             try {
 				MealModel meal = new MealModel(DateHelper.CurrentWeeknumber);
 				
                 ViewData["food"] = meal.RandomItem.Name;
+                Console.WriteLine($"Index Page: Meal={meal.ToString()} ViewData[food]={meal.RandomItem.Name}");
                 return Page();
                 
-			} catch {
-
+			} catch (Exception e) {
+                Console.WriteLine(e.Message);
                 return RedirectToPage("./Closed");
             }
         }

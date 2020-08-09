@@ -25,15 +25,15 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
         private void FetchRaw()
         {
             // Create new request
-			var request = (HttpWebRequest) WebRequest.Create(Endpoint);
-			
+            var request = (HttpWebRequest)WebRequest.Create(Endpoint);
+
             // Catch response
-            var response = (HttpWebResponse) request.GetResponse();
+            var response = (HttpWebResponse)request.GetResponse();
 
             // Read response into string
-			var reader = new StreamReader(response.GetResponseStream());
-			_rawFoods = reader.ReadToEnd();
-			reader.Close();
+            var reader = new StreamReader(response.GetResponseStream());
+            _rawFoods = reader.ReadToEnd();
+            reader.Close();
         }
 
         private void SplitRaw()
@@ -43,8 +43,8 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
 
             // For each line in the raw string
             var firstLine = true;
-			foreach (var line in lines)
-			{
+            foreach (var line in lines)
+            {
                 // Skip CSV header line
                 if (firstLine)
                 {
@@ -55,8 +55,8 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
                 // Parse CSV line
                 var foodValues = line.Split(";", StringSplitOptions.RemoveEmptyEntries);
 
-				var foodName = foodValues[3];
-				var foodDate = foodValues[0];
+                var foodName = foodValues[3];
+                var foodDate = foodValues[0];
 
                 // Both name and date have to be not empty or null
                 if (string.IsNullOrEmpty(foodName) && string.IsNullOrEmpty(foodDate))
@@ -70,10 +70,10 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
                 if (DateHelper.IsSameDay(DateTime.Today, parsedFoodDate))
                 {
                     _foods.Add(new FoodModel(foodName, parsedFoodDate));
-				}
-			}
+                }
+            }
 
-		}
+        }
 
         private string Endpoint => $"http://www.stwno.de/infomax/daten-extern/csv/UNI-R/{Weeknumber}.csv";
 
@@ -81,5 +81,18 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
 
         public bool IsEmpty => _foods.Count == 0;
 
+        public override string ToString()
+        {
+            string retVal = string.Empty;
+            foreach (FoodModel item in _foods)
+            {
+                if (string.IsNullOrEmpty(retVal))
+                    retVal += item.ToString();
+                else
+                    retVal += string.Format(", {0}", item);
+            }
+
+            return $"MealModel: Weeknumber={Weeknumber} Foods={retVal}";
+        }
     }
 }

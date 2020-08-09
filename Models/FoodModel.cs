@@ -15,16 +15,16 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
         }
 
         public string Name { get; set; }
-		public DateTime Date { get; }
+        public DateTime Date { get; }
 
         private void ConvertToUtf8()
         {
-			Encoding iso = Encoding.GetEncoding("ISO-8859-1");
-			Encoding utf8 = Encoding.UTF8;
+            Encoding iso = Encoding.GetEncoding("ISO-8859-1");
+            Encoding utf8 = Encoding.UTF8;
 
-			byte[] utfBytes = utf8.GetBytes(Name);
-			byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
-			Name = iso.GetString(isoBytes);
+            byte[] utfBytes = utf8.GetBytes(Name);
+            byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
+            Name = iso.GetString(isoBytes);
         }
 
         private void RemoveBrackets()
@@ -33,6 +33,9 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
             Name = System.Text.RegularExpressions.Regex.Replace(Name, Pattern, "");
         }
 
-
+        public override string ToString()
+        {
+            return $"FoodModel: Name={Name} Date={Date}";
+        }
     }
 }
