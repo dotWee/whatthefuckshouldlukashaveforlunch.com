@@ -21,6 +21,12 @@ namespace WhatTheFuckShouldLukasHaveForLunch
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
+                    var portVar = Environment.GetEnvironmentVariable("PORT");
+                    if (portVar != null)
+                    {
+                        webBuilder.UseUrls("http://*:" + Environment.GetEnvironmentVariable("PORT"));
+                    }
                 });
     }
 }
