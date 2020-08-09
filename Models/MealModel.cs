@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using WhatTheFuckShouldLukasHaveForLunch.Exceptions;
 using WhatTheFuckShouldLukasHaveForLunch.Helper;
 
@@ -9,31 +11,44 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
 {
     public class MealModel
     {
-        private int Weeknumber { get; set; }
+        private HttpClient client = new HttpClient();
+
+        // private readonly IHttpClientFactory _clientFactory;
+
+        private int Weeknumber
+        {
+            get; set;
+        }
 
         private List<FoodModel> _foods = new List<FoodModel>();
         private string _rawFoods = string.Empty;
 
-        public MealModel(int weeknumber)
+        public MealModel(int _weeknumber, HttpClient _httpClient)
         {
-            Weeknumber = weeknumber;
-
-            FetchRaw();
-            SplitRaw();
+            Weeknumber = _weeknumber;
+            client = _httpClient;
         }
 
-        private void FetchRaw()
+        private async Task<string> FetchRaw()
         {
-            // Create new request
-            var request = (HttpWebRequest)WebRequest.Create(Endpoint);
+            // Call asynchronous network methods in a try/catch block to handle exceptions.
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(Endpoint);
+                response.EnsureSuccessStatusCode();
 
-            // Catch response
-            var response = (HttpWebResponse)request.GetResponse();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseBody);
 
-            // Read response into string
-            var reader = new StreamReader(response.GetResponseStream());
-            _rawFoods = reader.ReadToEnd();
-            reader.Close();
+                _rawFoods = responseBody;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+
+            return _rawFoods;
         }
 
         private void SplitRaw()
@@ -77,7 +92,13 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
 
         private string Endpoint => $"http://www.stwno.de/infomax/daten-extern/csv/UNI-R/{Weeknumber}.csv";
 
-        public FoodModel RandomItem => _foods[new Random().Next(0, _foods.Count)];
+        public async Task<FoodModel> GetRandomFoodAsync() {
+            await FetchRaw();
+            SplitRaw();
+
+            if (!IsEmpty) return _foods[new Random().Next(0, _foods.Count)];
+            else return null;
+        }
 
         public bool IsEmpty => _foods.Count == 0;
 

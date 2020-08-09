@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -12,28 +13,39 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
 {
     public class IndexModel : PageModel
     {
+        private readonly IHttpClientFactory _clientFactory;
+
         public static string CurrentYear => DateTime.Today.Year.ToString();
 
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, IHttpClientFactory clientFactory)
         {
             _logger = logger;
+            _clientFactory = clientFactory;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGet()
         {
-            // ViewData["food"] = "Seelachs Müllerin mit Kartoffel-Gurkensalat";
-            // return Page();
+            var client = _clientFactory.CreateClient();
 
-            try {
-				MealModel meal = new MealModel(DateHelper.CurrentWeeknumber);
-				
-                ViewData["food"] = meal.RandomItem.Name;
-                Console.WriteLine($"Index Page: Meal={meal.ToString()} ViewData[food]={meal.RandomItem.Name}");
-                return Page();
-                
-			} catch (Exception e) {
+            try
+            {
+                MealModel meal = new MealModel(DateHelper.CurrentWeeknumber, client);
+                var randomItem = await meal.GetRandomFoodAsync();
+                if (randomItem != null)
+                {
+                    ViewData["food"] = randomItem.Name;
+                    Console.WriteLine($"Index Page: Meal={meal.ToString()} ViewData[food]={randomItem.ToString()}");
+                    return Page();
+                }
+                else
+                {
+                    return RedirectToPage("./Closed");
+                }
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
                 return RedirectToPage("./Closed");
             }
