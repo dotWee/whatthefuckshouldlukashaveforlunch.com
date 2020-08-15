@@ -1,10 +1,38 @@
 ﻿@page
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 @model ClosedModel
 
 <h1 class="cover-heading">Canteen seems closed!</h1>
 
-<p class="lead">Try again tomorrow or refresh the page.</p>
+@if(Model.Reason == null) {
+    
+<p class="lead">Maybe come back tomorrow and <a asp-page="Index" class="btn btn-sm btn-outline-dark">refresh the site</a> ?</p>
 
-<p class="lead">
-    <a asp-page="Index" class="btn btn-lg btn-outline-dark">Refresh</a>
-</p>
+} else {
+
+<p class="lead">Maybe come back later and <a asp-page="Index" class="btn btn-sm btn-outline-dark">refresh the site</a> ,</p>
+
+<p class="lead">or take a look at <a href="#" class="btn btn-outline-dark btn-sm" role="button" data-toggle="modal" data-target="#reason">what looks wrong</a> .</p>
+
+<!-- Modal -->
+<div class="modal fade" id="reason" tabindex="-1" aria-labelledby="reasonLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-italic" id="reasonLabel">MensaClosedException Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>@Html.DisplayTextFor(Model => Model.Reason)</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+}
