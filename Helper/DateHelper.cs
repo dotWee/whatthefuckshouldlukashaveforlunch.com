@@ -5,7 +5,7 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Helper
 {
     public class DateHelper
     {
-        private const string Format = "dd.MM.yyyy";
+        public const string Format = "dd.MM.yyyy";
 
         public static int TodaysDayOfYear = DateTime.Today.DayOfYear;
 

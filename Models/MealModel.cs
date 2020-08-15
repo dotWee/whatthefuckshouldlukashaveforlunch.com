@@ -56,51 +56,85 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Models
             // Split raw string into an array of lines
             var lines = _rawFoods.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
-            // For each line in the raw string
-            var firstLine = true;
-            foreach (var line in lines)
+            try
             {
-                // Skip CSV header line
-                if (firstLine)
+                // Check lines against current date string
+                var nowDate = DateTime.Now.ToString(DateHelper.Format);
+
+                // For each line in the raw string
+                var firstLine = true;
+                foreach (var line in lines)
                 {
-                    firstLine = false;
-                    continue;
-                }
+                    // Skip CSV header line
+                    if (firstLine)
+                    {
+                        firstLine = false;
+                        continue;
+                    }
 
-                // Parse CSV line
-                var foodValues = line.Split(";", StringSplitOptions.RemoveEmptyEntries);
+                    // Stop processing the line if it doesn't start with the current date string
+                    if (!line.StartsWith(nowDate, System.StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        Console.WriteLine($"Line doesn't start with our date: ignoring. nowDate={nowDate} line={line}");
+                        continue;
+                    }
 
-                var foodName = foodValues[3];
-                var foodDate = foodValues[0];
+                    // Parse CSV line
+                    var foodValues = line.Split(";", StringSplitOptions.RemoveEmptyEntries);
 
-                // Both name and date have to be not empty or null
-                if (string.IsNullOrEmpty(foodName) && string.IsNullOrEmpty(foodDate))
-                {
-                    throw new MensaClosedException("yea");
-                }
+                    var foodName = foodValues[3];
+                    var foodDate = foodValues[0];
+
+                    // Both name and date have to be not empty or null
+                    if (string.IsNullOrEmpty(foodName) && string.IsNullOrEmpty(foodDate))
+                    {
+                        throw new MensaClosedException("Invalid line (NullOrEmpty foodName & NullOrEmpty foodDate");
+                    }
 
 
-                // If date of current lines matches today, add to list
-                var parsedFoodDate = DateHelper.ParseDate(foodDate);
-                if (DateHelper.IsSameDay(DateTime.Today, parsedFoodDate))
-                {
-                    _foods.Add(new FoodModel(foodName, parsedFoodDate));
+                    // If date of current lines matches today, add to list
+                    var parsedFoodDate = DateHelper.ParseDate(foodDate);
+                    if (DateHelper.IsSameDay(DateTime.Today, parsedFoodDate))
+                    {
+                        _foods.Add(new FoodModel(foodName, parsedFoodDate));
+                    }
                 }
             }
+            catch (FormatException)
+            {
+                throw new MensaClosedException("Can't format the current moment into a short date string!");
+            }
 
+            Console.WriteLine($"Size of foodsArray={_foods.Count} after splitting up the lines");
+
+            if (_foods.Count == 0)
+            {
+                throw new MensaClosedException($"After parsing {lines.Length} menu lines, not even one entry matches the current date string!");
+            }
         }
 
         private string Endpoint => $"http://www.stwno.de/infomax/daten-extern/csv/UNI-R/{Weeknumber}.csv";
 
-        public async Task<FoodModel> GetRandomFoodAsync() {
-            await FetchRaw();
-            SplitRaw();
+        public async Task<FoodModel> GetRandomFoodAsync()
+        {
+            try
+            {
+                await FetchRaw();
+                SplitRaw();
 
-            if (!IsEmpty) return _foods[new Random().Next(0, _foods.Count)];
-            else return null;
+                if (_foods.Count > 0)
+                {
+                    return _foods[new Random().Next(0, _foods.Count)];
+                }
+            }
+            catch (MensaClosedException e)
+            {
+                Console.WriteLine("Error: {0}", e);
+                throw;
+            }
+
+            return null;
         }
-
-        public bool IsEmpty => _foods.Count == 0;
 
         public override string ToString()
         {
