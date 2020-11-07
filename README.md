@@ -21,9 +21,21 @@ this repository contains the source code of [whatthefuckshouldlukashaveforlunch]
 2. clone this git repository and change into the repo directory:
 
     ```bash
+    # clone the repository
     $ git clone https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com
 
+    # enter the source code root
     $ cd whatthefuckshouldlukashaveforlunch.com
+    ```
+
+3. (optional) update web dependencies (bootstrap & jquery w/ extensions) using [libman](https://docs.microsoft.com/en-us/aspnet/core/client-side/libman/)
+
+    ```bash
+    # to install libman
+    $ dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+
+    # use libman to pull the binaries
+    $ libman restore
     ```
 
 ## [usage](#usage)
@@ -34,7 +46,6 @@ this repository contains the source code of [whatthefuckshouldlukashaveforlunch]
 
     ```bash
     $ dotnet restore
-    $ dotnet tool install -g Microsoft.Web.LibraryManager.Cli
     ```
 
 2. start building & run on localhost:
