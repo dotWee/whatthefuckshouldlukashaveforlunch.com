@@ -3,14 +3,14 @@
   "defaultProvider": "unpkg",
   "libraries": [
     {
-      "provider": "cdnjs",
       "library": "jquery@3.3.1",
       "files": [
-        "jquery.min.js",
-        "jquery.js",
-        "jquery.min.map"
+        "LICENSE.txt",
+        "dist/jquery.min.js",
+        "dist/jquery.js",
+        "dist/jquery.min.map"
       ],
-      "destination": "wwwroot/lib/jquery/dist/"
+      "destination": "wwwroot/lib/jquery/"
     },
     {
       "library": "jquery-validation@1.19.2",
