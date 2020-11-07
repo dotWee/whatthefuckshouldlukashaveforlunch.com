@@ -34,6 +34,7 @@ this repository contains the source code of [whatthefuckshouldlukashaveforlunch]
 
     ```bash
     $ dotnet restore
+    $ dotnet tool install -g Microsoft.Web.LibraryManager.Cli
     ```
 
 2. start building & run on localhost:
