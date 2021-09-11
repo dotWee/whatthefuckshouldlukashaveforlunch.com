@@ -81,7 +81,9 @@ body {
   padding-top: 1rem;
 }
 
-.navbar-brand {}
+.navbar-brand {
+  padding-left: 1rem;
+}
 
 @media (min-width: 48em) {
   .navbar-brand {
