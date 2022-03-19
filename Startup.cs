@@ -50,7 +50,7 @@ namespace WhatTheFuckShouldLukasHaveForLunch
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
