@@ -6,7 +6,7 @@ _what the fuck should lukas have for lunch*?_
 
 <sub>* at the regensburg university of applied sciences canteen </sub>
 
-this repository contains the source code of [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/), written in some `c#` using the `.net 5` framework.
+this repository contains the source code of [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/), written in some `c#` using the `.net 6` framework.
 
 ![screenshot.png](https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com/raw/master/art/screenshot.png)
 
@@ -16,7 +16,7 @@ this repository contains the source code of [whatthefuckshouldlukashaveforlunch]
 
 ## [setup](#setup)
 
-1. get the [.net 5.0 sdk](https://dotnet.microsoft.com/download/) for your platform
+1. get the [.net 6.0 sdk](https://dotnet.microsoft.com/download/) for your platform
 
 2. clone this git repository and change into the repo directory:
 
