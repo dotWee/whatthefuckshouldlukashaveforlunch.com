@@ -20,7 +20,8 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
 
         public IActionResult OnGet()
         {
-            Reason = _httpContextAccessor.HttpContext.Session.GetString("Reason");
+            // TODO get a error-reason and display profoundly to the user 
+            this.Reason = "THE_REASON";
             
             return Page();
         }

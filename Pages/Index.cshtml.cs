@@ -45,8 +45,6 @@ namespace WhatTheFuckShouldLukasHaveForLunch.Pages
             }
             catch (MensaClosedException e)
             {
-                _httpContextAccessor.HttpContext.Session.SetString("Reason", e.Message);
-
                 Console.WriteLine("Error: {0}", e);
                 return RedirectToPage("./Closed");
             }
