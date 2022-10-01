@@ -1,6 +1,6 @@
 # [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/)
 
-[![GitHub License](https://img.shields.io/github/license/dotWee/startpage)](https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com/blob/master/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/dotWee/whatthefuckshouldlukashaveforlunch.com)](./LICENSE)
 
 _what the fuck should lukas have for lunch*?_
 
