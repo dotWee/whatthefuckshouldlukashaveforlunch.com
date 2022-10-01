@@ -17,6 +17,7 @@
     },
     "WhatTheFuckShouldLukasHaveForLunch": {
       "commandName": "Project",
+      "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
