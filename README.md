@@ -8,7 +8,7 @@ _what the fuck should lukas have for lunch*?_
 
 this repository contains the source code of [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/), written in some `c#` using the `.net 6` framework.
 
-![screenshot.png](https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com/raw/master/art/screenshot.png)
+![screenshot.png](.github/screenshot.png)
 
 > **anecdote**: this code exists since i started programming. developed with absolutly zero knowledge. i'll probably never touch this code again.
 
