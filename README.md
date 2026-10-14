@@ -42,6 +42,8 @@ Override them per environment with `wrangler.jsonc` env blocks or `wrangler secr
 
 ## Development
 
+Requires Node.js 24 or newer.
+
 ```bash
 npm install
 npm run dev
