@@ -1,107 +1,76 @@
-# [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/)
+# whatthefuckshouldlukashaveforlunch
 
 [![GitHub License](https://img.shields.io/github/license/dotWee/whatthefuckshouldlukashaveforlunch.com)](./LICENSE)
 
-_what the fuck should lukas have for lunch*?_
+_what the fuck should lukas have for lunch?_
 
-<sub>* at the regensburg university of applied sciences canteen </sub>
+This is a Cloudflare Worker that picks a random dish from the [OTH Regensburg](https://www.oth-regensburg.de) canteen menu for today.
 
-this repository contains the source code of [whatthefuckshouldlukashaveforlunch](https://whatthefuckshouldlukashaveforlunch.com/), written in some `c#` using the `.net 6` framework.
+## Tech Stack
 
-![screenshot.png](.github/screenshot.png)
+- Cloudflare Workers with [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
+- [Hono](https://hono.dev/) for routing and HTML responses
+- STWNO weekly CSV feed fetched at the edge
+- Vitest for menu parsing and suggestion behavior
+- GitHub Actions CI
 
-> **anecdote**: this code exists since i started programming. developed with absolutly zero knowledge. i'll probably never touch this code again.
+## How It Works
 
-> **recruters**: please don't look
+1. The worker resolves today's date in `Europe/Berlin`.
+2. It computes the STWNO week number (Monday-based, week 1 starts on the first Monday of the year) and downloads the weekly CSV:
+   `http://www.stwno.de/infomax/daten-extern/csv/UNI-R/{weekNumber}.csv`
+3. The parser decodes the Latin-1 feed, reads semicolon-separated rows, filters the `datum` column to today, and cleans bracketed allergen annotations from dish names.
+4. A uniformly random dish is selected and displayed.
+5. If the feed cannot be loaded or no meal exists for today, the user is redirected to `/closed`.
 
-## [setup](#setup)
+## Configuration
 
-1. get the [.net 6.0 sdk](https://dotnet.microsoft.com/download/) for your platform
+Canteen settings live in `wrangler.jsonc` as Worker vars:
 
-2. clone this git repository and change into the repo directory:
+```jsonc
+{
+  "vars": {
+    "CANTEEN_NAME": "OTH Regensburg canteen",
+    "WEEKLY_MENU_URL_TEMPLATE": "http://www.stwno.de/infomax/daten-extern/csv/UNI-R/{weekNumber}.csv",
+    "TIMEZONE": "Europe/Berlin",
+    "HTTP_TIMEOUT_SECONDS": "10"
+  }
+}
+```
 
-    ```bash
-    # clone the repository
-    $ git clone https://github.com/dotWee/whatthefuckshouldlukashaveforlunch.com
+Override them per environment with `wrangler.jsonc` env blocks or `wrangler secret` / dashboard variables.
 
-    # enter the source code root
-    $ cd whatthefuckshouldlukashaveforlunch.com
-    ```
+## Development
 
-3. (optional) update web dependencies (bootstrap & jquery w/ extensions) using [libman](https://docs.microsoft.com/en-us/aspnet/core/client-side/libman/)
+```bash
+npm install
+npm run dev
+```
 
-    ```bash
-    # to install libman
-    $ dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+Then open [localhost:8787](http://localhost:8787).
 
-    # use libman to pull the binaries
-    $ libman restore
-    ```
+Run the quality gate (typecheck, ESLint, tests):
 
-## [usage](#usage)
+```bash
+npm run check
+```
 
-### run site locally
+The worker exposes a health endpoint at `/healthz`.
 
-1. pull required package dependencies:
+## Deploy
 
-    ```bash
-    $ dotnet restore
-    ```
+```bash
+npm run deploy
+```
 
-2. start building & run on localhost:
+## Project Structure
 
-    ```bash
-    $ dotnet run
-    info: Microsoft.Hosting.Lifetime[0]
-          Now listening on: http://localhost:5000
-    info: Microsoft.Hosting.Lifetime[0]
-          Application started. Press Ctrl+C to shut down.
-    ```
+- `src/` contains the Worker, CSV parser, date helpers, and HTML templates.
+- `public/` contains static assets served by Workers Assets.
+- `test/` contains Vitest coverage for parsing, dates, selection, and suggestion flow.
 
-3. now browse to [localhost:5000](http://localhost:5000)
+## License
 
-### run using a self-made docker [docker](https://www.docker.com/) image
+Copyright (c) 2016 Lukas 'dotwee' Wolfsteiner <lukas@wolfsteiner.media>
 
-1. build the docker image:
-
-    ```bash
-    $ docker build \
-        --pull --rm \
-        -t whatthefuckshouldlukashaveforlunch .
-    ```
-
-2. and run the fresh docker image:
-
-    ```bash
-    $ docker run \
-        --rm -it \
-        -p 8080:80 \
-        whatthefuckshouldlukashaveforlunch
-    ```
-
-3. now browse to [localhost:8080](http://localhost:8080)
-
-### or pull the [docker](https://www.docker.com/) image from the docker hub
-
-1. pull the docker image:
-
-    ```bash
-    $ docker pull dotwee/whatthefuckshouldlukashaveforlunch
-    ```
-
-2. and run the docker image:
-
-    ```bash
-    $ docker run \
-        --rm -it \
-        -p 8080:80 \
-        dotwee/whatthefuckshouldlukashaveforlunch
-    ```
-
-3. now browse to [localhost:8080](http://localhost:8080)
-
-## [license](#license)
-
-copyright (c) 2019 lukas 'dotwee' wolfsteiner <lukas@wolfsteiner.media>
-
-licensed under the [_do what the fuck you want to_](/LICENSE) public license
+Licensed under the [_Do What The Fuck You Want To_](/LICENSE) public license.

@@ -1,0 +1,133 @@
+:root {
+  --black: #000;
+  --white: #fff;
+  --blue: #00f;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  color: var(--black);
+  font-family: system-ui, sans-serif;
+  line-height: 1.45;
+}
+
+a {
+  color: var(--blue);
+}
+
+.container {
+  width: min(40rem, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--black);
+}
+
+.nav-inner,
+.footer-inner,
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-inner,
+.footer-inner {
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.brand {
+  color: var(--black);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+  padding: 1.5rem 0 2rem;
+}
+
+.eyebrow,
+.section-label,
+.dish,
+.price,
+code {
+  font-family: ui-monospace, monospace;
+}
+
+.eyebrow,
+.section-label {
+  margin: 0;
+}
+
+.section-label {
+  margin-top: 1.5rem;
+}
+
+h1,
+.dish {
+  margin: 0.4rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.course,
+.lead,
+.colophon {
+  margin: 0.6rem 0 0;
+}
+
+.fare {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fare li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--black);
+}
+
+.actions {
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  background: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--black);
+}
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--black);
+}
+
+@media (max-width: 640px) {
+  .nav-inner,
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

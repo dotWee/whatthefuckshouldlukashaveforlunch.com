@@ -1,0 +1,13 @@
+{
+  "name": "whatthefuckshouldlukashaveforlunch.com",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "forwardPorts": [8787],
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "cloudflare.vscode-cloudflare-workers-devtools"
+      ]
+    }
+  }
+}
