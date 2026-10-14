@@ -25,6 +25,9 @@ describe("page templates", () => {
 
     expect(html).toContain("<title>Privacy - what the fuck should lukas have for lunch?</title>");
     expect(html).toContain("<article>notes</article>");
+    expect(html).toContain("setSiteId', '5'");
+    expect(html).toContain("//matm.dotwee.de/");
+    expect(html).toContain("matm.php");
   });
 
   it("fills the suggestion template from menu data", () => {
